@@ -38,12 +38,28 @@ public class PdfToExcel {
 					
 					Scanner scanWord = new Scanner(line);
 					
-					/*
-					 * for (String string : scanWord.next())) {
-					 * 
-					 * }
-					 */
 					
+					/*
+					 * String line=""; String strDate=""; String strDay=""; String
+					 * strTotalProfit=""; String strDailyProfit="";
+					 * 
+					 * while (scanLine.hasNextLine()) {
+					 * 
+					 * line = scanLine.nextLine();
+					 * 
+					 * Scanner scnWord = new Scanner(line);
+					 * 
+					 * strDate=scnWord.next();
+					 * 
+					 * strDay=scnWord.next();
+					 * 
+					 * strTotalProfit=scnWord.next();
+					 * 
+					 * strDailyProfit=scnWord.next();
+					 * 
+					 * csvFile.println(strDailyProfit+","+strDay+","+strTotalProfit+","+
+					 * strDailyProfit);
+					 */
 					csvFile.println(scanWord.next()+","+scanWord.next()+","+scanWord.next()+","+scanWord.next());//Here we have to put loop for each "scanWord" 
 					
 					scanWord.close();
