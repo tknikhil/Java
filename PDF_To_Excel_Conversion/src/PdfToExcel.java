@@ -1,3 +1,12 @@
+/*code to convert PDF to Excel 
+ * 
+ * JAR-->fontbox-2
+ *       pdfbox-2
+ *       commons-logging-1
+ *       
+ *        */
+
+
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -7,6 +16,8 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 
 public class PdfToExcel {
+
+	private static String line =null;
 
 	public static void main(String[] args) {
 		
@@ -22,31 +33,25 @@ public class PdfToExcel {
 				
 				Scanner scanLine = new Scanner(readDocument);
 				
-				String line="";
-				String strDate="";
-				String strDay="";
-				String strTotalProfit="";
-				String strDailyProfit="";
-				
-				while (scanLine.hasNextLine()) 
-				{		
+				while (scanLine.hasNextLine()) {
+					line  = scanLine.nextLine();
 					
-					line = scanLine.nextLine();
+					Scanner scanWord = new Scanner(line);
 					
-					Scanner scnWord = new Scanner(line);	
+					/*
+					 * for (String string : scanWord.next())) {
+					 * 
+					 * }
+					 */
 					
-					strDate=scnWord.next();
+					csvFile.println(scanWord.next()+","+scanWord.next()+","+scanWord.next()+","+scanWord.next());//Here we have to put loop for each "scanWord" 
 					
-					strDay=scnWord.next();
+					scanWord.close();
 					
-					strTotalProfit=scnWord.next();
-					
-					strDailyProfit=scnWord.next();
-					
-					csvFile.println(strDailyProfit+","+strDay+","+strTotalProfit+","+strDailyProfit);
-					
-				}	
+				}
+				scanLine.close();
 			}
+			
 			document.close();
 			csvFile.close();
 			
