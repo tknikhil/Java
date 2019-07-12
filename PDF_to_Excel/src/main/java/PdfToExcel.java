@@ -57,7 +57,7 @@ public class PdfToExcel {
 	private static void imageToExcel() {
 		mTessBaseAPI = new TessBaseAPI();
 		mTessBaseAPI.Init("src/main/resources/file/", "eng");
-		mImage = lept.pixRead("src/main/resources/img/image-0.png");
+		mImage = lept.pixRead("src/main/resources/img/image-0.png"); //Need to  iterate every image not single image
 		mTessBaseAPI.SetImage(mImage);
 		mBytePointer = mTessBaseAPI.GetUTF8Text();
 		mREAD_FROM_IMAGE = mBytePointer.getString();
@@ -65,7 +65,7 @@ public class PdfToExcel {
 		readLine = new Scanner(mREAD_FROM_IMAGE);
 
 		try {
-			mCSVFile = new PrintWriter("src/main/resources/file/soa.csv");
+			mCSVFile = new PrintWriter("src/main/resources/file/soa.csv"); //Need Unique Name to every single file
 			mCsvPrinter = new CSVPrinter(mCSVFile, CSVFormat.DEFAULT);
 		} catch (FileNotFoundException e) {e.printStackTrace();} catch (IOException e) {e.printStackTrace();}
 		
