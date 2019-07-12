@@ -22,6 +22,7 @@ public class PdfToExcel {
 	
 	private static String mINPUT_FILE_PATH = "pdf/soa_mine.pdf";
 	private static String mOUTPUT_FILE_PATH="src/main/resources/img/";
+	private static String mTXT_FILE_PATH = "src/main/resources/file/";
 	
 	private static InputStream mInputStream;
 	private static PDDocument mPdDocument;
@@ -56,8 +57,8 @@ public class PdfToExcel {
 
 	private static void imageToExcel() {
 		mTessBaseAPI = new TessBaseAPI();
-		mTessBaseAPI.Init("src/main/resources/file/", "eng");
-		mImage = lept.pixRead("src/main/resources/img/image-0.png"); //Need to  iterate every image not single image
+		mTessBaseAPI.Init(mTXT_FILE_PATH, "eng");
+		mImage = lept.pixRead(mOUTPUT_FILE_PATH+"image-0.png"); //Need to  iterate every image not single image
 		mTessBaseAPI.SetImage(mImage);
 		mBytePointer = mTessBaseAPI.GetUTF8Text();
 		mREAD_FROM_IMAGE = mBytePointer.getString();
@@ -65,7 +66,7 @@ public class PdfToExcel {
 		readLine = new Scanner(mREAD_FROM_IMAGE);
 
 		try {
-			mCSVFile = new PrintWriter("src/main/resources/file/soa.csv"); //Need Unique Name to every single file
+			mCSVFile = new PrintWriter(mTXT_FILE_PATH+"soa.csv"); //Need Unique Name to every single file
 			mCsvPrinter = new CSVPrinter(mCSVFile, CSVFormat.DEFAULT);
 		} catch (FileNotFoundException e) {e.printStackTrace();} catch (IOException e) {e.printStackTrace();}
 		
