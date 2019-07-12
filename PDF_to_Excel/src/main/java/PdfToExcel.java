@@ -76,7 +76,8 @@ public class PdfToExcel {
 			// System.out.println(scanWord.nextLine());
 			try {
 				mCsvPrinter.printRecord(scanWord.nextLine());
-			} catch (IOException e) {e.printStackTrace();}finally {try {mCsvPrinter.flush();} catch (IOException e) {e.printStackTrace();}}
+			} catch (IOException e) {e.printStackTrace();}
+			finally {try {mCsvPrinter.flush();} catch (IOException e) {e.printStackTrace();}}
 			scanWord.close();
 		}
 		readLine.close();
