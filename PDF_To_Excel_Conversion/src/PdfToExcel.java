@@ -24,7 +24,7 @@ public class PdfToExcel {
 		try {
 			
 			PrintWriter csvFile = new PrintWriter("res/ExcelConvertedFile.csv");
-			PDDocument document = PDDocument.load(new File("res/file2.pdf"));
+			PDDocument document = PDDocument.load(new File("res/soa_mine.pdf"));
 			if(!document.isEncrypted()) {
 				PDFTextStripperByArea mPDFTextStripperByArea = new PDFTextStripperByArea();
 				mPDFTextStripperByArea.setSortByPosition(true);
@@ -37,30 +37,11 @@ public class PdfToExcel {
 					line  = scanLine.nextLine();
 					
 					Scanner scanWord = new Scanner(line);
-					
-					
-					/*
-					 * String line=""; String strDate=""; String strDay=""; String
-					 * strTotalProfit=""; String strDailyProfit="";
-					 * 
-					 * while (scanLine.hasNextLine()) {
-					 * 
-					 * line = scanLine.nextLine();
-					 * 
-					 * Scanner scnWord = new Scanner(line);
-					 * 
-					 * strDate=scnWord.next();
-					 * 
-					 * strDay=scnWord.next();
-					 * 
-					 * strTotalProfit=scnWord.next();
-					 * 
-					 * strDailyProfit=scnWord.next();
-					 * 
-					 * csvFile.println(strDailyProfit+","+strDay+","+strTotalProfit+","+
-					 * strDailyProfit);
-					 */
-					csvFile.println(scanWord.next()+","+scanWord.next()+","+scanWord.next()+","+scanWord.next());//Here we have to put loop for each "scanWord" 
+					//System.out.println(scanWord.nextLine().matches("NITHIN T KOCHARAMBIL"));
+					if(scanWord.nextLine().matches("NITHIN T KOCHARAMBIL"))
+							System.out.println(scanWord);
+			
+					//csvFile.println(scanWord.nextLine());//Here we have to put loop for each "scanWord" 
 					
 					scanWord.close();
 					
